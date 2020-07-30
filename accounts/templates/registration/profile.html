@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Profile" %} - {{usr.username}}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row border rounded-lg p-3 bg-light">
+    <div class="col-auto text-right">
+      <img src="{{usr.profile.profile_pic.url}}" class="rounded-lg">
+    </div>
+    <div class="col-md p-5 text-left">
+      {% if usr.profile.full_name_private %}
+        <h4>{{usr.username}}</h4>
+      {% else %}
+        <h4>{{usr.first_name}} {{usr.last_name}}</h4>
+        {% trans "Username" %}: {{usr.username}} <br />
+      {% endif %}
+      {% if not usr.profile.email_private %}
+      {% trans "E-mail" %}: {{usr.email}} <a href="mailto:{{ usr.email }}"><i class="fa fa-envelope" aria-hidden="true"></i></a><br />
+      {% endif %}
+
+
+      <div class="display-4">
+      {% if usr.profile.facebook %}<a href="https://facebook.com/{{ usr.profile.facebook }}"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+      {% endif %}
+      {% if usr.profile.instagram %}<a href="https://instagram.com/{{ usr.profile.instagram }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+      {% endif %}
+      {% if usr.profile.twitter %}<a href="https://twitter.com/{{ usr.profile.twitter }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      {% endif %}
+      </div>
+
+
+      <br />
+      {%if user.is_authenticated and user.username == usr.username%}
+      <a class="btn btn-outline-primary my-2 my-sm-0" href="{%url 'edit_profile'%}">{% trans "Edit profile" %}</a>
+      {%endif%}
+    </div>
+  </div>
+</div>
+  
+<div class="container pt-5">
+  <div class="row">
+    {% if items|length > 0 %}
+    <div class="col border rounded-lg p-3 bg-light">
+      <h2>{% trans "My Items" %}</h2>
+      <div class="container">
+        <div class="row">
+          {% for item in items %}
+          <div class="col-4 p-2">
+          <a href="{% url 'view_item' item=item.id %}">
+          <img src="{{item.image.url}}" class="img-fluid rounded-lg">
+          <p>{{item.name}}<br />
+          </a> <br/>
+          </p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if reviews|length > 0 and not usr.profile.reviews_list_private%}
+        <div class="col border rounded-lg p-3 bg-light">
+          <h2>{% trans "My Reviews" %}</h2>
+          <div class="container">
+            <div class="row">
+              {% for review in reviews %}
+              <div class="col-4 p-2">
+              <a href="{% url 'view_item' item=review.item.id %}">
+              <img src="{{review.item.image.url}}" class="img-fluid rounded-lg">
+              <p>{{review.item.name}}<br />
+              {{review.stars_rendered|safe}}
+              </a> <br/>
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+      {% endif %}
+  </div>
+</div>
+
+  
+{% endblock %}

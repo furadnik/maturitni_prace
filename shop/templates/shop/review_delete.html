@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Review delete" %} - {{item.name}}{% endblock %}
+
+{% block content %} 
+<div class="container border rounded-lg p-4 mb-3 bg-light">
+
+<form method="POST" action="{% url 'review_delete' item=item.id review=review.id %}">
+    {% csrf_token %}
+    <h1>{% trans "Are you sure you want to remove your review of" %} "{{item.name}}"? </h1>
+    <p>{% trans "Review info" %}:</p>
+    <p>{{review.stars_rendered|safe}}</p>
+    <p>{% trans "Text" %}: "{{review.text}}"</p>
+    <a class="btn btn-secondary" href="{% url 'view_item' item=item.id %}">{% trans "Cancel" %}</a>
+    <input class="btn btn-danger" type="submit" value="{% trans "Yes" %}">
+  </form> 
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Remove Address" %}{% endblock %}
+
+{% block content %} 
+  <h2>Address delete</h2>
+  <div class="container">
+  <div class="col border rounded-lg p-2 mb-5 bg-light"> 
+  {% trans "Are you sure?" %}
+  <form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if request.GET.next %}
+    <input type="hidden" name="next" value="{{request.GET.next}}">
+    {% endif %}
+    <input class="btn btn-primary m-2" type="submit" value="{% trans "Yes" %}">
+  </form> 
+  </div>
+  </div>
+{% endblock %}

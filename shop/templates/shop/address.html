@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Addresses" %}{% endblock %}
+
+{% block content %}
+<br />
+<h1>{% trans "Addresses" %}</h1>
+<div class="container">
+<div class="col border rounded-lg p-2 mb-5 bg-light">
+  <div class="row">
+  {% for address in addresses %}
+    <div class="col-4 my-3">
+      <h2>{{ address.city }}</h2>
+      {{ address.first_name }} {{ address.last_name }}<br />
+      {{ address.avenue }}<br />
+      {{ address.post_code }} {{ address.city }}<br />
+      <a href="{% url 'address_edit' id=address.id %}">{% trans "Edit" %}</a> | <a href="{% url 'address_delete' id=address.id %}">{% trans "Delete" %}</a>
+    </div>
+  {% endfor %}
+  </div>
+  <br />
+  <br />
+  <a href="{% url 'address_add' %}">{% trans "Add address" %}</a>
+</div>
+</div>
+{% endblock %}

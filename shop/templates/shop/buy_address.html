@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Address" %}{% endblock %}
+{% block content %}
+<style>
+  ul {
+    list-style-type: none;
+  }
+</style>  
+<h2>{% trans "Address" %}</h2>
+  <form method="POST" action="{% url 'buy_address' %}">
+  <div class="container pt-5">
+    <div class="row">
+      {% for field in form %}
+      <div class="col border rounded-lg p-4 mb-5 pl-5 bg-light text-left">
+        <h3>{{field.label_tag}}</h3>
+        <div class="container">
+          {{ field }}
+          {{field.errors}}
+        </div>
+        <a class="btn btn-outline-secondary my-2 my-sm-0" href="{% url 'address_add' %}?order={{order}}">{% trans "Add Address" %}</a>
+      </div>
+      {% endfor %}
+    
+    </div>
+  </div>
+    {% csrf_token %}
+    <input type="hidden" value="{{order.id}}" name="order">
+    <a class="btn btn-outline-danger my-2 my-sm-0" href="{% url 'buy_details' %}">{% trans "Back" %}</a>
+    <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="{% trans "Next" %}">
+  </form> 
+  
+
+{% endblock %}

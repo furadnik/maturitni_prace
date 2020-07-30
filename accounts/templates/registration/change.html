@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Change password" %}{% endblock %}
+
+{% block content %} 
+<style>
+  ul {
+    list-style-type: none;
+  }
+</style> 
+  <form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>{% trans "Edit profile" %}</h2>
+    <div class="container">
+      <div class="border rounded-lg p-3 mb-3 bg-light">
+        <div class="row mb-3">
+          {% for field in form %}
+          <div class="col text-right mb-1 my-auto">
+            {{field.label }}:
+          </div>
+          <div class="col text-left mb-1">
+            {{ field }} {{field.errors }}
+          </div>
+          <div class="w-100"></div>
+          {% endfor %}
+          <div class="w-100 my-2"></div>
+          {% for field in profile_form %}
+          <div class="col text-right mb-1 my-auto">
+            {{field.label }}:
+          </div>
+          <div class="col text-left mb-1">
+            {{ field }} {{field.errors }}
+          </div>
+          <div class="w-100"></div>
+          {% endfor %}
+        
+        
+        </div>
+        <p><a href="{% url 'password_change' %}">{% trans "Change password" %}</a></p>
+        <p><a href="{% url 'address' %}">{% trans "My Addresses" %}</a></p>
+        <input class="btn btn-primary" type="submit" value="{% trans "Save" %}">
+      </div>
+    </div>
+  </form> 
+{% endblock %}
+    

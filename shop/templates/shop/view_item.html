@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{item.name}}{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="border rounded-lg p-3 bg-light mb-4">
+  <div class="container">
+  <div class="row">
+    <div class="col-auto text-right">
+      <img src="{{item.image.url}}" class="rounded-lg">
+    </div>
+    <div class="col text-left">
+      <h1>{{item.name}}</h1>
+      {% if user == item.author %}
+      <a class="mb-3 btn btn-outline-secondary" href="{% url 'edit_item' item=item.id %}">{% trans "Edit item" %}</a>
+      {% endif %}
+      {% if incart %}
+      <a class="mb-3 btn btn-outline-primary" href="{% url 'cart' %}">{% trans "In cart" %}</a> <br />
+      {% else %}
+      <a class="mb-3 btn btn-primary" href="{% url 'cart_add' item=item.id %}">{% trans "Add to cart" %}</a> <br />
+      {% endif %}
+      <h2>{{item.price}} {% trans "CZK" %} </h2>
+      {{item.description}} <br />
+    </div>
+  </div>
+  </div>
+</div>
+
+  <h2>{% trans "Reviews" %}</h2>
+<div class="border rounded-lg p-3 px-5 mb-5 bg-light">
+  <h3>{% trans "Rating" %}: {{item.rating_stars|safe}}</h3>
+  {% if reviews|length == 0 %}
+  {% trans "No reviews to show yet!" %}
+  {% else %}
+  {% for review in reviews %}
+  <div class="row mb-5">
+    <div class="col-1 text-right">
+      <img src="{{review.author.profile.profile_pic.url}}" class="mw-25 img-fluid rounded-lg">
+    </div>
+    <div class="col text-left text-wrap w-75">
+      <a href="{% url 'profile' username=review.author.username%}">{{review.author.username}}</a> 
+      {% if user == review.author %}
+      <a class="ml-2 btn btn-outline-secondary" href="{% url 'review_edit' item=item.id review=review.id %}">{% trans "Edit" %}</a>
+      {% endif %}<br />
+      {{review.stars_rendered|safe}} <br />
+      {{review.text}}
+    </div>
+    <div class="w-100"></div>
+  </div>
+  {% endfor %}
+  {% if more_reviews %}
+  <h3><a href="{% url 'item_reviews' item=item.id%}">{% trans "View All" %}</a></h3>
+  {% endif %}
+  {% endif %}
+</div>
+  {% if user.is_authenticated %}
+  <h3>{% trans "Add review" %}</h3>
+  <div class="border rounded-lg p-3 px-5 bg-light">
+    <form method="POST" action="">
+    <div class="containter text-left">
+      {% csrf_token %}
+      {{form.as_p|safe}}
+    </div>
+    <input type="submit" class="btn btn-primary" value="{% trans "Review" %}">
+    </form>
+  </div>
+</div>
+  {% endif %}
+{% endblock %}

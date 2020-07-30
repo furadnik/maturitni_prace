@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Create item" %}{% endblock %}
+{% block content %} 
+<div class="container border rounded-lg p-4 mb-3 bg-light">
+<form class="" method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.errors }}
+    <div class="row text-left">
+      <div class="col">
+        {% trans "Name" %}: {{ form.name }}
+      </div>
+      <div class="col">
+        {% trans "Price" %}: {{ form.price }}
+      </div>
+      <div class="w-100"></div>
+      <div class="col mt-3">
+        {% trans "Description" %}: <br/>
+        {{ form.description }}
+      </div>
+      <div class="w-100"></div>
+      <div class="col mt-3">
+        {% trans "Image" %}: {{  form.image }}
+      </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="{% trans "Done" %}">
+  </form> 
+</div>
+{% endblock %}

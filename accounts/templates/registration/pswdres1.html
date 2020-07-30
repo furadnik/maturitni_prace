@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Password reset" %}{% endblock %}
+
+{% block content %} 
+  <h2>Password reset</h2>
+  <div class="container">
+    <form method="POST" action="">
+    {% csrf_token %}
+    <div class="container">
+      <div class="border rounded-lg p-3 mb-3 bg-light">
+        {% trans "Please, enter your email!" %}
+        <div class="row my-3">
+          {% for field in form %}
+          <div class="col text-right align-center mb-1">
+            {{field.label }}:
+          </div>
+          <div class="col text-left mb-1">
+            <input class="form-control w-50" type="text" name="{{ field.name }}"> {{field.errors }}
+          </div>
+          <div class="w-100"></div>
+          {% endfor %}
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="{% trans "Submit" %}">
+      </div>
+    </div>
+  </form> 
+  </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Place an order" %}{% endblock %}
+{% block content %}
+  
+<div class="container pt-5 mb-4">
+  <div class="row">
+    <div class="col border rounded-lg p-3 bg-light">
+      <h2>{% trans "Place an order" %}</h2>
+      <div class="container">
+        <div class="row">
+        {% for stack in order.orderstack_set.all %} 
+          <div class="col-4">
+          <img src="{{stack.item.image.url}}" class="max-w-50 img-fluid rounded-lg">
+          <p>{{stack.item.name}} <br />
+          {% if stack.number != 1 %} {{stack.number}} x {{stack.item.price}} {% trans "CZK" %}<br />{% endif %}
+          {{stack.total_price}} {% trans "CZK" %} <br /> 
+          <br/>
+          </p>
+          </div>
+        {% endfor %}
+        </div>
+        <h3>{% trans "Total" %}: {{user.profile.total_price}} {% trans "CZK" %}</h3>
+      </div>
+    </div>
+
+        <div class="col border rounded-lg p-3 bg-light">
+          <h2>{% trans "Details" %}</h2>
+          <div class="container text-left">
+  {% trans "Shipment" %}: {{order.get_shipment_option_display}} <hr />
+  {% trans "Payment" %}: {{order.get_payment_option_display}} <hr />
+  {% trans "Shipping address" %}: <br />
+  <div class="w-100 my-2"></div>
+  <h2>{{order.address.first_name}} {{order.address.last_name}}</h2>
+  {{order.address.avenue}}<br />
+  {{order.address.post_code}} {{order.address.city}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<form method="GET" action="{% url 'buy_success' %}">
+  <input type="hidden" value="{{order.id}}" name="order">
+  <a class="btn btn-outline-danger my-2 my-sm-0" href="{% url 'cart' %}">{% trans "Back to cart" %}</a>
+  <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="{% trans "Place the order" %}">
+</form> 
+
+{% endblock %}

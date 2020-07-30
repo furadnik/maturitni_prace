@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Reviews" %} - {{item.name}}{% endblock %}
+{% block content %}
+  <h3><a href="{% url 'view_item' item=item.id%}">{% trans "Back" %}</a></h3>
+  <h1>{{item.name}} {% trans "Reviews" %}</h1>
+
+<div class="container border rounded-lg p-4 mb-3 bg-light">
+  {% for review in reviews %}
+  <div class="row mb-5">
+    <div class="col-1 text-right">
+      <img src="{{review.author.profile.profile_pic.url}}" class="mw-25 img-fluid rounded-lg">
+    </div>
+    <div class="col text-left text-wrap w-75">
+      <a href="{% url 'profile' username=review.author.username%}">{{review.author.username}}</a> 
+      {% if user == review.author %}
+      <a class="btn btn-outline-secondary" href="{% url 'review_edit' item=item.id review=review.id %}">{% trans "Edit" %}</a>
+      {% endif %}<br />
+      {{review.stars_rendered|safe}} <br />
+      {{review.text}}
+    </div>
+    <div class="w-100"></div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

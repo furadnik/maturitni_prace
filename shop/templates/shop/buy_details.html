@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Buy items" %}{% endblock %}
+{% block content %}
+<style>
+  ul {
+    list-style-type: none;
+  }
+</style>  
+<h2>Details</h2>
+  <form method="POST" action="{% url 'buy_details' %}">
+  <div class="container pt-5">
+    <div class="row">
+      {% for field in form %}
+      <div class="col border rounded-lg p-2 mb-5 pl-5 bg-light text-left">
+        <h3>{{field.label_tag}}</h3>
+        <div class="container">
+          {{ field }}
+          {{field.errors}}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+    {% csrf_token %}
+    <input type="hidden" value="{{order.id}}" name="order">
+    <a class="btn btn-outline-danger my-2 my-sm-0" href="{% url 'buy' %}">{% trans "Back" %}</a>
+    <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="{% trans "Next" %}">
+  </form> 
+  
+
+{% endblock %}

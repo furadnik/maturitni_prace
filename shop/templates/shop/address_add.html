@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Add Address" %}{% endblock %}
+
+{% block content %} 
+  <h2>Address add</h2>
+  <div class="container">
+  <div class="col border rounded-lg p-2 mb-5 bg-light">
+  <form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+    {% for field in form %}
+    <div class="col my-auto text-right">
+    {{field.label }}:
+    </div>
+    <div class="col text-left">
+      <div class="w-50">
+      {{field}}
+      {{field.errors}}
+      </div>
+    </div>
+    <div class="w-100 my-2"></div>
+    {% endfor %}
+    </div>
+    {% if request.GET.next %}
+    <input type="hidden" name="next" value="{{request.GET.next}}">
+    {% endif %}
+    {% if request.GET.order %}
+    <input type="hidden" name="order" value="{{request.GET.order}}">
+    {% endif %}
+    <input type="submit" class="btn btn-primary" value="{% trans "Save" %}">
+  </form> 
+  </div>
+  </div>
+{% endblock %}
