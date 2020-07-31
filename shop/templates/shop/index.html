@@ -5,6 +5,16 @@
 {% block content %}
 <img src="{% static 'shop/logo_invert.png' %}" alt="Trifles" class="w-50">
 <p class="lead pt-3">{% trans "(This is a proof of concept e-shop, none of these items are actually for sale)" %}</p>
+<form method="GET" action="" class="form-inline">
+  {% trans "Category:" %}
+  <select name="category" class="custom-select ml-3 mr-2" id="inlineFormCustomSelect">
+      {% if cur == 0 %}<option selected>Choose...</option>{% endif %}
+      {% for cat in cats %}
+      <option value="{{cat.id}}"{% if cur == cat.id %} selected{% endif %}>{{cat.name}}</option>
+      {% endfor %}
+  </select>
+  <input class="btn btn-primary" type="submit" value="{% trans 'Choose' %}">
+</form>
 <div class="row">
 {% for item in items %}
   <div class="col p-2"><a href="{% url 'view_item' item=item.id %}">

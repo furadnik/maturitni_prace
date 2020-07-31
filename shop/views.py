@@ -10,11 +10,21 @@ from datetime import datetime
 
 # Create your views here.
 def index(request):
-  p_num = request.GET.get('page', 1)
-  items = Paginator(Item.objects.all().order_by('-created_at'), 40)
+  if 'category' in request.GET:
+    cat = request.GET['category']
+    try:
+      c = Category.objects.get(id=cat)
+      items = c.items
+    except:items = Item.objects
+  else:
+    cat = 0
+    items = Item.objects
 
-  stuff_for_render = {"items": items.page(p_num)}
-  return render(request, 'shop/index.html', context=stuff_for_render)
+  p_num = request.GET.get('page', 1)
+  items = Paginator(items.all().order_by('-created_at'), 40)
+
+  context = {'items': items.page(p_num), 'cats': Category.objects.all(), 'cur': int(cat)}
+  return render(request, 'shop/index.html', context)
 
 @login_required
 def create_item(request):
@@ -401,18 +411,3 @@ def address_delete(request, id):
     return redirect('address') 
   stuff_for_render = {'address': address}
   return render(request, 'shop/address_delete.html', context=stuff_for_render)
-
-def categories(request):
-  if 'category' in request.GET:
-    cat = request.GET['category']
-    try:
-      c = Category.objects.get(id=cat)
-      items = c.items.all()
-    except:items = Item.objects.all()
-  else:
-    cat = 0
-    items = Item.objects.all()
-
-  context = {'items': items, 'cats': Category.objects.all(), 'cur': int(cat)}
-  print(context)
-  return render(request, 'shop/categories.html', context)
