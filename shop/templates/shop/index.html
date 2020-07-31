@@ -7,7 +7,7 @@
 <p class="lead pt-3">{% trans "(This is a proof of concept e-shop, none of these items are actually for sale)" %}</p>
 <div class="row">
 {% for item in items %}
-  <div class="col p-3"><a href="{% url 'view_item' item=item.id %}">
+  <div class="col p-2"><a href="{% url 'view_item' item=item.id %}">
   <div class="p-2">
   <img src="{{item.image.url}}" class="rounded-lg" style="width: 300px;">
   </div>
