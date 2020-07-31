@@ -26,8 +26,8 @@
           <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="GET">
             <input name="query" class="form-control mr-sm-2" type="search" placeholder="{% trans "Search" %}" aria-label="Search">
             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
-            <button class="btn btn-primary m-1 my-2 my-sm-0" onclick="window.location.href='{% url 'categories' %}'">{% trans "Categories" %}</button>
           </form>
+          <button class="btn btn-primary m-1 my-2 my-sm-0" onclick="window.location.href='{% url 'categories' %}'">{% trans "Categories" %}</button>
         </li>
       </ul>
       {%if user.is_authenticated%}

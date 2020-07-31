@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import ItemForm, ReviewForm, AddressForm, OrderAddressForm, OrderPaymentShipmentForm
-from .models import Item, Review, Address, Order, OrderStack
+from .models import Item, Review, Address, Order, OrderStack, Category
 from accounts.models import Stack
 from django.utils.translation import gettext as _
 from datetime import datetime
@@ -395,4 +395,16 @@ def address_delete(request, id):
   return render(request, 'shop/address_delete.html', context=stuff_for_render)
 
 def categories(request):
-  pass
+  if 'category' in request.GET:
+    cat = request.GET['category']
+    try:
+      c = Category.objects.get(id=cat)
+      items = c.items.all()
+    except:items = Item.objects.all()
+  else:
+    cat = 0
+    items = Item.objects.all()
+
+  context = {'items': items, 'cats': Category.objects.all(), 'cur': int(cat)}
+  print(context)
+  return render(request, 'shop/categories.html', context)
