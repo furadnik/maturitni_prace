@@ -324,12 +324,20 @@ def review_edit(request, item, review):
 
 def search(request):
   if request.method != "GET":return redirect('index')
-
+  if 'category' in request.GET:
+    cat = request.GET['category']
+    try:
+      c = Category.objects.get(id=cat)
+      items = c.items
+    except:items = Item.objects
+  else:
+    cat = 0
+    items = Item.objects
   q = request.GET["query"]
   p_num = request.GET.get('page', 1)
-  items = Paginator(Item.objects.filter(name__icontains=q).order_by('-created_at'), 40)
+  items = Paginator(items.filter(name__icontains=q).order_by('-created_at'), 40)
 
-  stuff_for_render = {"items": items.page(p_num), "q": q}
+  stuff_for_render = {"items": items.page(p_num), "q": q, 'cats': Category.objects.all(), 'cur': int(cat)}
   return render(request, 'shop/search.html', context=stuff_for_render)
 
 @login_required
