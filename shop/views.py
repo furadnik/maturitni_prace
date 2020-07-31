@@ -393,3 +393,6 @@ def address_delete(request, id):
     return redirect('address') 
   stuff_for_render = {'address': address}
   return render(request, 'shop/address_delete.html', context=stuff_for_render)
+
+def categories(request):
+  pass
