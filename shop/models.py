@@ -128,3 +128,10 @@ class OrderStack(models.Model):
   @property
   def total_price(self):
     return self.number*self.item.price
+
+class Category(models.Model):
+  name = models.CharField(max_length=30)
+  items = models.ManyToManyField(Item)
+
+  def __str__(self):
+    return self.name

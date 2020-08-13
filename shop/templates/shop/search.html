@@ -5,6 +5,23 @@
 {% block content %}
 <p class="lead pt-3">{% trans "(This is a proof of concept e-shop, none of these items are actually for sale)" %}</p>
 <h1>{% trans "Search:" %} {{q}}</h1>
+<form method="GET" action="" class="form-inline">
+  {% trans "Category:" %}
+  <select name="category" class="custom-select ml-3 mr-5" id="inlineFormCustomSelect">
+      {% if cur == 0 %}<option selected>Choose...</option>{% endif %}
+      {% for cat in cats %}
+      <option value="{{cat.id}}"{% if cur == cat.id %} selected{% endif %}>{{cat.name}}</option>
+      {% endfor %}
+  </select>
+  {% trans "Sort by:" %}
+  <select name="sort" class="custom-select ml-3 mr-2" id="inlineFormCustomSelect">
+    {% for s in sorts %}
+    <option value="{{s.0}}"{% if sort == s.0 %} selected{% endif %}>{{s.1}}</option>
+    {% endfor %}
+  </select>
+  <input type="hidden" name="query" value="{{q}}">
+  <input class="btn btn-primary" type="submit" value="{% trans 'Choose' %}">
+</form>
 {% if items|length == 0 %}
 {% trans "Nothing found.." %}
 {%endif %}

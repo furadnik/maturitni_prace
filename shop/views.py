@@ -3,18 +3,42 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import ItemForm, ReviewForm, AddressForm, OrderAddressForm, OrderPaymentShipmentForm
-from .models import Item, Review, Address, Order, OrderStack
+from .models import Item, Review, Address, Order, OrderStack, Category
 from accounts.models import Stack
 from django.utils.translation import gettext as _
 from datetime import datetime
 
 # Create your views here.
 def index(request):
-  p_num = request.GET.get('page', 1)
-  items = Paginator(Item.objects.all().order_by('-created_at'), 40)
+  if 'category' in request.GET:
+    cat = request.GET['category']
+    try:
+      c = Category.objects.get(id=cat)
+      items = c.items
+    except:items = Item.objects
+  else:
+    cat = 0
+    items = Item.objects
 
-  stuff_for_render = {"items": items.page(p_num)}
-  return render(request, 'shop/index.html', context=stuff_for_render)
+  sorts = [
+    ['-created_at', _('Date created, descending')],
+    ['created_at', _('Date created, ascending')],
+    ['-price', _('Price, descending')],
+    ['price', _('Price, ascending')],
+  ]
+
+  if 'sort' in request.GET and request.GET['sort'] in [x[0] for x in sorts]:
+        items = items.all().order_by(request.GET['sort'])
+        sort = request.GET['sort']
+  else:
+        items = items.all().order_by('-created_at')
+        sort = '-created_at'
+
+  p_num = request.GET.get('page', 1)
+  items = Paginator(items, 40)
+
+  context = {'items': items.page(p_num), 'cats': Category.objects.all(), 'cur': int(cat), 'sort': sort, 'sorts': sorts}
+  return render(request, 'shop/index.html', context)
 
 @login_required
 def create_item(request):
@@ -324,13 +348,36 @@ def review_edit(request, item, review):
 
 def search(request):
   if request.method != "GET":return redirect('index')
-
+  if 'category' in request.GET:
+    cat = request.GET['category']
+    try:
+      c = Category.objects.get(id=cat)
+      items = c.items
+    except:items = Item.objects
+  else:
+    cat = 0
+    items = Item.objects
   q = request.GET["query"]
-  p_num = request.GET.get('page', 1)
-  items = Paginator(Item.objects.filter(name__icontains=q).order_by('-created_at'), 40)
 
-  stuff_for_render = {"items": items.page(p_num), "q": q}
-  return render(request, 'shop/search.html', context=stuff_for_render)
+  sorts = [
+    ['-created_at', _('Date created, descending')],
+    ['created_at', _('Date created, ascending')],
+    ['-price', _('Price, descending')],
+    ['price', _('Price, ascending')],
+  ]
+
+  if 'sort' in request.GET and request.GET['sort'] in [x[0] for x in sorts]:
+        items = items.filter(name__icontains=q).order_by(request.GET['sort'])
+        sort = request.GET['sort']
+  else:
+        items = items.filter(name__icontains=q).order_by('-created_at')
+        sort = '-created_at'
+
+  p_num = request.GET.get('page', 1)
+  items = Paginator(items, 40)
+
+  context = {'items': items.page(p_num), "q": q, 'cats': Category.objects.all(), 'cur': int(cat), 'sort': sort, 'sorts': sorts}
+  return render(request, 'shop/search.html', context)
 
 @login_required
 def address(request):
