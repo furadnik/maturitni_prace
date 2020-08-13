@@ -20,10 +20,24 @@ def index(request):
     cat = 0
     items = Item.objects
 
-  p_num = request.GET.get('page', 1)
-  items = Paginator(items.all().order_by('-created_at'), 40)
+  sorts = [
+    ['-created_at', _('Date created, descending')],
+    ['created_at', _('Date created, ascending')],
+    ['-price', _('Price, descending')],
+    ['price', _('Price, ascending')],
+  ]
 
-  context = {'items': items.page(p_num), 'cats': Category.objects.all(), 'cur': int(cat)}
+  if 'sort' in request.GET and request.GET['sort'] in [x[0] for x in sorts]:
+        items = items.all().order_by(request.GET['sort'])
+        sort = request.GET['sort']
+  else:
+        items = items.all().order_by('-created_at')
+        sort = '-created_at'
+
+  p_num = request.GET.get('page', 1)
+  items = Paginator(items, 40)
+
+  context = {'items': items.page(p_num), 'cats': Category.objects.all(), 'cur': int(cat), 'sort': sort, 'sorts': sorts}
   return render(request, 'shop/index.html', context)
 
 @login_required
@@ -344,11 +358,26 @@ def search(request):
     cat = 0
     items = Item.objects
   q = request.GET["query"]
-  p_num = request.GET.get('page', 1)
-  items = Paginator(items.filter(name__icontains=q).order_by('-created_at'), 40)
 
-  stuff_for_render = {"items": items.page(p_num), "q": q, 'cats': Category.objects.all(), 'cur': int(cat)}
-  return render(request, 'shop/search.html', context=stuff_for_render)
+  sorts = [
+    ['-created_at', _('Date created, descending')],
+    ['created_at', _('Date created, ascending')],
+    ['-price', _('Price, descending')],
+    ['price', _('Price, ascending')],
+  ]
+
+  if 'sort' in request.GET and request.GET['sort'] in [x[0] for x in sorts]:
+        items = items.filter(name__icontains=q).order_by(request.GET['sort'])
+        sort = request.GET['sort']
+  else:
+        items = items.filter(name__icontains=q).order_by('-created_at')
+        sort = '-created_at'
+
+  p_num = request.GET.get('page', 1)
+  items = Paginator(items, 40)
+
+  context = {'items': items.page(p_num), "q": q, 'cats': Category.objects.all(), 'cur': int(cat), 'sort': sort, 'sorts': sorts}
+  return render(request, 'shop/search.html', context)
 
 @login_required
 def address(request):
