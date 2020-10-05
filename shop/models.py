@@ -77,7 +77,7 @@ class Review(models.Model):
   @property
   def stars_rendered(self):
     r = ""
-    for x in range(self.stars):r += '&#11088;'
+    for _ in range(self.stars):r += '&#11088;'
     return r
 
   def __str__(self):
@@ -131,7 +131,7 @@ class OrderStack(models.Model):
 
 class Category(models.Model):
   name = models.CharField(max_length=30)
-  items = models.ManyToManyField(Item)
+  items = models.ManyToManyField(Item, related_name="categories")
 
   def __str__(self):
     return self.name

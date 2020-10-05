@@ -48,6 +48,8 @@ def create_item(request):
     if form.is_valid():
       item = form.save(commit=False)
       item.author = request.user
+      item.save() #first save the item w/o cats, then add them and save again bcs database n stuff
+      item.categories.set(form.cleaned_data["categories"])
       item.save()
       messages.success(request, _('Item created'))
       return redirect('view_item', item=item.id)
@@ -75,7 +77,7 @@ def edit_item(request, item):
   else:
     form = ItemForm(instance=item)
   context = {'form': form,'iid': item.id}
-  return render(request, 'shop/edit_item.html', context=context)
+  return render(request, 'shop/create_item.html', context=context)
 
 def view_item(request, item):
   try:item = Item.objects.get(id=item)
