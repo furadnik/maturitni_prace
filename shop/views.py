@@ -49,8 +49,9 @@ def create_item(request):
       item = form.save(commit=False)
       item.author = request.user
       item.save() #first save the item w/o cats, then add them and save again bcs database n stuff
-      item.categories.set(form.cleaned_data["categories"])
-      item.save()
+      if "categories" in form.cleaned_data:
+            item.categories.set(form.cleaned_data["categories"])
+            item.save()
       messages.success(request, _('Item created'))
       return redirect('view_item', item=item.id)
   else:
@@ -72,6 +73,9 @@ def edit_item(request, item):
 
     if form.is_valid():
       item = form.save()
+      if "categories" in form.cleaned_data:
+            item.categories.set(form.cleaned_data["categories"])
+            item.save()
       messages.success(request, _('Item saved'))
       return redirect('view_item', item=item.id)
   else:
