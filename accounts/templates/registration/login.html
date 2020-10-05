@@ -5,6 +5,8 @@
 {% block content %} 
 <div class="container w-50 border rounded-lg p-4 bg-light">
   <h1 class="p-3">{% trans "Login" %}</h1>
+
+  <!-- login form -->
 <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
     {% if form.errors %}
@@ -16,16 +18,21 @@
       {{field.label}}
     </div>
     <div class="col text-left">
+      <!-- special type if field == password -->
       <input class="form-control mr-sm-2 w-50" type="{% if field.html_name == "password" %}password{% else %}text{% endif %}" id="{{ field.id_for_label }}" autocomplete="{{ field.html_name }}" name="{{ field.html_name }}"/>
       
     </div>
     <div class="w-100 my-1"></div>
     {% endfor %}
     </div>
+    <!-- next redirect -->
     <input type="hidden" name="next" value="{{request.GET.next}}">
+    
     <input class="btn btn-outline-primary m-3" type="submit" value="{% trans 'Login' %}">
   </form> 
 </div>
+
+<!-- forgot password and register -->
 <a href="{%url 'password_reset' %}">{% trans "Forgot password?" %}</a> | 
 <a href="{%url 'register' %}?next={{request.path}}">{% trans "Register" %}</a>
 

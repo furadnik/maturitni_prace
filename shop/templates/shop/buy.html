@@ -6,23 +6,25 @@
 {% block content %}
 <h1>{% trans "Place an order" %}:</h1>
 
+<!-- list users items -->
 <div class="container border rounded-lg p-3 bg-light mb-5">
-      <div class="container">
-        <div class="row">
-        {% for stack in user.profile.stack_set.all %} 
-          <div class="col-4">
-          <img src="{{stack.item.image.url}}" class="max-w-50 img-fluid rounded-lg">
-          <p><h2>{{stack.item.name}}</h2>
-          {% if stack.number != 1 %} {{stack.number}} x {{stack.item.price}} {% trans "CZK" %}<br />{% endif %}
-          {{stack.total_price}} {% trans "CZK" %} <br /> 
-          <br/>
-          </p>
-          </div>
-        {% endfor %}
-        </div>
+  <div class="container">
+    <div class="row">
+    {% for stack in user.profile.stack_set.all %} 
+      <div class="col-4">
+      <img src="{{stack.item.image.url}}" class="max-w-50 img-fluid rounded-lg">
+      <p><h2>{{stack.item.name}}</h2>
+      {% if stack.number != 1 %} {{stack.number}} x {{stack.item.price}} {% trans "CZK" %}<br />{% endif %}
+      {{stack.total_price}} {% trans "CZK" %} <br /> 
+      <br/>
+      </p>
       </div>
+    {% endfor %}
+    </div>
+  </div>
 </div>
 
+<!-- show total; go back or proceed -->
 <h2 class="pb-3">{% trans "Total" %}: {{user.profile.total_price}} {% trans "CZK" %}</h2>
 <form method="GET" action="{% url 'buy_details' %}">
   <input type="hidden" value="{{order.id}}" name="order">

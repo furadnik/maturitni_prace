@@ -5,6 +5,8 @@
 {% block content %}
 <img src="{% static 'shop/logo_invert.png' %}" alt="Trifles" class="w-50">
 <p class="lead pt-3">{% trans "(This is a proof of concept e-shop, none of these items are actually for sale)" %}</p>
+
+<!-- categories, sorting -->
 <form method="GET" action="" class="form-inline">
   {% trans "Category:" %}
   <select name="category" class="custom-select ml-3 mr-5" id="inlineFormCustomSelect">
@@ -21,6 +23,8 @@
   </select>
   <input class="btn btn-primary" type="submit" value="{% trans 'Choose' %}">
 </form>
+
+<!-- items -->
 <div class="row">
 {% for item in items %}
   <div class="col p-2"><a href="{% url 'view_item' item=item.id %}">
@@ -29,12 +33,13 @@
   </div>
   <h3><p>{{item.name}}</p></a></h3>
   {{item.price}} {% trans "CZK" %} <br />
-  
   </p>
   </div>
 {% endfor %}
   </div>
-  <div class="container p-5">
+
+<!-- pages -->
+<div class="container p-5">
 {% if items.has_previous %}
     <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'index' %}?page={{items.previous_page_number}}">{% trans "Previous Page" %}</a>
 {% endif %}
@@ -42,4 +47,6 @@
     <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'index' %}?page={{items.next_page_number}}">{% trans "Next Page" %}</a>
 {% endif %}
   </div>
+
+
 {% endblock %}

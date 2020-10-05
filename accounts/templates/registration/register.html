@@ -11,9 +11,12 @@
   <form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
     <h2>{% trans "Registration" %}</h2>
+    
     <div class="container">
       <div class="border rounded-lg p-3 mb-3 bg-light">
         <div class="row mb-3">
+
+        <!-- user (basic info) -->
           {% for field in form %}
           <div class="col-2 text-right mb-1 my-auto">
             {{field.label }}:
@@ -26,6 +29,9 @@
           {% endif %}
           {% endfor %}
           <div class="w-100 my-2 "></div>
+
+
+          <!-- profile (more info thats not important really) -->
           {% for field in profile_form %}
           <div class="col text-right mb-1 my-auto">
             {{field.label }}:

@@ -5,10 +5,12 @@
 {% block content %}
 <p class="lead pt-3">{% trans "(This is a proof of concept e-shop, none of these items are actually for sale)" %}</p>
 <h1>{% trans "Search:" %} {{q}}</h1>
+
+<!-- categories, sorting -->
 <form method="GET" action="" class="form-inline">
   {% trans "Category:" %}
   <select name="category" class="custom-select ml-3 mr-5" id="inlineFormCustomSelect">
-      {% if cur == 0 %}<option selected>Choose...</option>{% endif %}
+      {% if cur == 0 %}<option value="0" selected>Choose...</option>{% endif %}
       {% for cat in cats %}
       <option value="{{cat.id}}"{% if cur == cat.id %} selected{% endif %}>{{cat.name}}</option>
       {% endfor %}
@@ -19,30 +21,37 @@
     <option value="{{s.0}}"{% if sort == s.0 %} selected{% endif %}>{{s.1}}</option>
     {% endfor %}
   </select>
-  <input type="hidden" name="query" value="{{q}}">
   <input class="btn btn-primary" type="submit" value="{% trans 'Choose' %}">
 </form>
+
+<!-- if no items -->
 {% if items|length == 0 %}
 {% trans "Nothing found.." %}
 {%endif %}
+
+
+<!-- items -->
 <div class="row">
 {% for item in items %}
   <div class="col p-2"><a href="{% url 'view_item' item=item.id %}">
   <div class="p-2">
   <img src="{{item.image.url}}" class="rounded-lg" style="width: 300px;">
-  </div>  <h3><p>{{item.name}}</p></a></h3>
+  </div>
+  <h3><p>{{item.name}}</p></a></h3>
   {{item.price}} {% trans "CZK" %} <br />
-  
   </p>
   </div>
 {% endfor %}
   </div>
-  <div class="container p-5">
+
+<!-- pages -->
+<div class="container p-5">
 {% if items.has_previous %}
-    <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'search' %}?query={{q}}&page={{items.previous_page_number}}">{% trans "Previous Page" %}</a>
+    <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'index' %}?page={{items.previous_page_number}}">{% trans "Previous Page" %}</a>
 {% endif %}
 {% if items.has_next %}
-    <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'search' %}?query={{q}}&page={{items.next_page_number}}">{% trans "Next Page" %}</a>
+    <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'index' %}?page={{items.next_page_number}}">{% trans "Next Page" %}</a>
 {% endif %}
   </div>
+
 {% endblock %}

@@ -4,6 +4,8 @@
 
 {% block content %} 
   <h2>{% trans "Edit Address" %}</h2>
+
+  <!-- edit address form -->
   <div class="container">
   <div class="col border rounded-lg p-2 mb-5 bg-light">
   <form method="POST" action="" enctype="multipart/form-data">
@@ -22,9 +24,12 @@
     <div class="w-100 my-2"></div>
     {% endfor %}
     </div>
+    <!-- next redirect field if exists -->
     {% if request.GET.next %}
     <input type="hidden" name="next" value="{{request.GET.next}}">
     {% endif %}
+
+    <!-- submit -->
     <input type="submit" class="btn btn-primary" value="{% trans "Save" %}">
   </form> 
   </div>

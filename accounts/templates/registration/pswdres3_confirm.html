@@ -8,9 +8,11 @@
     list-style-type: none;
   }
 </style> 
+<h2>{% trans "Change password" %}</h2>
+
+  <!-- change password form -->
   <form method="POST" action="">
     {% csrf_token %}
-    <h2>{% trans "Change password" %}</h2>
     <div class="container">
       <div class="border rounded-lg p-3 mb-3 bg-light">
         {% if form.errors %}
@@ -21,14 +23,19 @@
             {{field.label }}:
           </div>
           <div class="col text-left mb-1">
+              <!-- special case for autocomplete-->
             <input class="form-control w-50" type="password" name="{{ field.name }}" {% if field.name == "old_password" %}autocomplete="current-password"{% endif %}> {{field.errors }}
           </div>
           <div class="w-100"></div>
           {% endfor %}
         </div>
+
+        <!-- help text -->
         {{ form.new_password1.help_text }}
       </div>
     </div>
+
+    
     <input class="btn btn-primary" type="submit" value="{% trans "Submit" %}">
   </form> 
 {% endblock %}

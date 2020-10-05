@@ -7,6 +7,8 @@
 <h1>{% trans "Addresses" %}</h1>
 <div class="container">
 <div class="col border rounded-lg p-2 mb-5 bg-light">
+
+<!-- list addresses -->
   <div class="row">
   {% for address in addresses %}
     <div class="col-4 my-3">
@@ -18,8 +20,11 @@
     </div>
   {% endfor %}
   </div>
+
   <br />
   <br />
+
+  <!-- add new address -->
   <a href="{% url 'address_add' %}">{% trans "Add address" %}</a>
 </div>
 </div>

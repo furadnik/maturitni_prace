@@ -3,6 +3,7 @@
 {% block title %}{{item.name}}{% endblock %}
 
 {% block content %}
+<!-- item -->
 <div class="container">
 <div class="border rounded-lg p-3 bg-light mb-4">
   <div class="container">
@@ -27,6 +28,7 @@
   </div>
 </div>
 
+<!-- reviews -->
   <h2>{% trans "Reviews" %}</h2>
 <div class="border rounded-lg p-3 px-5 mb-5 bg-light">
   <h3>{% trans "Rating" %}: {{item.rating_stars|safe}}</h3>
@@ -54,6 +56,8 @@
   {% endif %}
   {% endif %}
 </div>
+
+  <!-- add review if possible -->
   {% if user.is_authenticated %}
   <h3>{% trans "Add review" %}</h3>
   <div class="border rounded-lg p-3 px-5 bg-light">
@@ -67,4 +71,5 @@
   </div>
 </div>
   {% endif %}
+
 {% endblock %}

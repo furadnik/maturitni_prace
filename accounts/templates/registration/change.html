@@ -8,12 +8,15 @@
     list-style-type: none;
   }
 </style> 
+
+  <!-- edit user + profile forms -->
   <form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
     <h2>{% trans "Edit profile" %}</h2>
     <div class="container">
       <div class="border rounded-lg p-3 mb-3 bg-light">
         <div class="row mb-3">
+          <!-- user -->
           {% for field in form %}
           <div class="col text-right mb-1 my-auto">
             {{field.label }}:
@@ -24,6 +27,7 @@
           <div class="w-100"></div>
           {% endfor %}
           <div class="w-100 my-2"></div>
+          <!-- profile -->
           {% for field in profile_form %}
           <div class="col text-right mb-1 my-auto">
             {{field.label }}:
@@ -36,6 +40,7 @@
         
         
         </div>
+        <!-- links and submit -->
         <p><a href="{% url 'password_change' %}">{% trans "Change password" %}</a></p>
         <p><a href="{% url 'address' %}">{% trans "My Addresses" %}</a></p>
         <input class="btn btn-primary" type="submit" value="{% trans "Save" %}">
