@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from .models import Profile, Stack
 
 class CustomUserCreationForm(UserCreationForm):
+  #custom inputs for password + password check
   password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}), label=_("Password"))
   password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}), label=_("Password again"))
   
@@ -23,7 +24,8 @@ class CustomUserCreationForm(UserCreationForm):
 
   def save(self, commit=True):
     user = super().save(commit=False)
-
+    
+    #the default user creation form doesnt save email and name, just username
     user.email = self.cleaned_data['email']
     user.first_name = self.cleaned_data['first_name']
     user.last_name = self.cleaned_data['last_name']

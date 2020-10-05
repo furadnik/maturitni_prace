@@ -33,6 +33,8 @@ class Profile(models.Model):
 
   def save(self):
     super().save()
+
+    #crop image
     img = Image.open(self.profile_pic.path)
     treshold = 300
     img.thumbnail((treshold, treshold))

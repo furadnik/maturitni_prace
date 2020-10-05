@@ -12,10 +12,12 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def register_page(request):
+  #if post, i.e. if the forms are filled
   if request.method == "POST":
     form = CustomUserCreationForm(request.POST)
     profile_form = ProfileForm(request.POST)
 
+    #if forms are ok, then save them and redirect
     if form.is_valid() and profile_form.is_valid():
       user = form.save()
 
@@ -33,6 +35,7 @@ def register_page(request):
       if 'next' in request.POST:return redirect(request.POST['next'])
       return redirect('user_profile')
 
+  #if forms not filled yet
   else:
     form = CustomUserCreationForm()
     profile_form = ProfileForm()
@@ -41,6 +44,7 @@ def register_page(request):
 
 @login_required
 def edit_profile_page(request):
+#logic same as register page
   if (request.method == "POST"):
     user_form = UserEditForm(request.POST, instance=request.user)
     profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
@@ -56,6 +60,8 @@ def edit_profile_page(request):
   return render(request, 'registration/change.html', context=context)
   
 def show_profile(request, username=None):
+      
+  #if no username -> username of user or redirect to login
   if not username:
     if request.user.is_authenticated:
       username = request.user.username
@@ -65,6 +71,7 @@ def show_profile(request, username=None):
       response['Location'] += '?next={}'.format(request.path)
       return response
   
+  #get user object
   if request.user.is_authenticated and username == request.user.username:
     usr = request.user
   else:
@@ -73,9 +80,12 @@ def show_profile(request, username=None):
       messages.error(request, _('Profile not found'))
       return redirect('index')
   
+  #private profile error 
   if usr != request.user and usr.profile.profile_private == True:
     messages.error(request, _('Cannot show a private profile'))
     return redirect('index')
+  
+  #gather data and render template
   reviews = usr.review_set.all().order_by('-created_at')
   items = usr.item_set.all().order_by('-created_at')
   context = {'usr': usr,'items':items, 'reviews':reviews}

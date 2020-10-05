@@ -42,6 +42,8 @@ class Item(models.Model):
   def save(self):
     #self.id = self.name.lower().replace(' ', '_').replace('/', '')
     super().save()
+    
+    #crop image
     img = Image.open(self.image.path)
     treshold = 300
     img.thumbnail((treshold, treshold))
