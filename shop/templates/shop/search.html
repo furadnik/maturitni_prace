@@ -10,7 +10,7 @@
 <form method="GET" action="" class="form-inline">
   {% trans "Category:" %}
   <select name="category" class="custom-select ml-3 mr-5" id="inlineFormCustomSelect">
-      {% if cur == 0 %}<option value="0" selected>Choose...</option>{% endif %}
+      {% if cur == 0 %}<option value="0" selected>{% trans 'Choose' %}...</option>{% endif %}
       {% for cat in cats %}
       <option value="{{cat.id}}"{% if cur == cat.id %} selected{% endif %}>{{cat.name}}</option>
       {% endfor %}
