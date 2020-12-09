@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-30 13:22+0000\n"
+"POT-Creation-Date: 2020-12-09 19:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,75 +19,75 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
 "<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: accounts/forms.py:9
+#: accounts/forms.py:10
 #, fuzzy
 msgid "Password"
 msgstr "Reset hesla"
 
-#: accounts/forms.py:10
+#: accounts/forms.py:11
 #, fuzzy
 msgid "Password again"
 msgstr "Heslo změněno!"
 
-#: accounts/forms.py:50
+#: accounts/forms.py:52
 msgid "Profile picture"
 msgstr "Profilový obrázek"
 
-#: accounts/forms.py:51
+#: accounts/forms.py:53
 msgid "Profile private"
 msgstr "Profil soukromý"
 
-#: accounts/forms.py:52
+#: accounts/forms.py:54
 msgid "Full name private"
 msgstr "Celé jméno soukromé"
 
-#: accounts/forms.py:53
+#: accounts/forms.py:55
 msgid "Reviews list private"
 msgstr "List recenzí soukromý"
 
-#: accounts/forms.py:54
+#: accounts/forms.py:56
 msgid "E-mail private"
 msgstr "E-mail soukromý"
 
 #: accounts/templates/registration/change.html:3
-#: accounts/templates/registration/change.html:39
+#: accounts/templates/registration/change.html:44
 #: accounts/templates/registration/password_change.html:3
-#: accounts/templates/registration/password_change.html:13
+#: accounts/templates/registration/password_change.html:15
 #: accounts/templates/registration/pswdres3_confirm.html:3
-#: accounts/templates/registration/pswdres3_confirm.html:13
+#: accounts/templates/registration/pswdres3_confirm.html:11
 #: accounts/templates/registration/register.html:3
 msgid "Change password"
 msgstr "Změnit heslo"
 
-#: accounts/templates/registration/change.html:13
-#: accounts/templates/registration/profile.html:35
+#: accounts/templates/registration/change.html:15
+#: accounts/templates/registration/profile.html:37
 msgid "Edit profile"
 msgstr "Upravit profil"
 
-#: accounts/templates/registration/change.html:40
+#: accounts/templates/registration/change.html:45
 msgid "My Addresses"
 msgstr "Moje adresy"
 
-#: accounts/templates/registration/change.html:41
-#: accounts/templates/registration/password_change.html:32
+#: accounts/templates/registration/change.html:46
+#: accounts/templates/registration/password_change.html:35
 msgid "Save"
 msgstr "Uložit"
 
 #: accounts/templates/registration/login.html:3
 #: accounts/templates/registration/login.html:7
-#: accounts/templates/registration/login.html:26
+#: accounts/templates/registration/login.html:31
 msgid "Login"
 msgstr "Přihlásit"
 
-#: accounts/templates/registration/login.html:11
+#: accounts/templates/registration/login.html:13
 msgid "Username or password incorrect!"
 msgstr "Uživatelské jméno nebo heslo nesprávné!"
 
-#: accounts/templates/registration/login.html:29
+#: accounts/templates/registration/login.html:36
 msgid "Forgot password?"
 msgstr "Zapomenuté heslo"
 
-#: accounts/templates/registration/login.html:30
+#: accounts/templates/registration/login.html:37
 msgid "Register"
 msgstr "Registrace"
 
@@ -104,19 +104,19 @@ msgstr "Použijte link:"
 msgid "Profile"
 msgstr "Profil"
 
-#: accounts/templates/registration/profile.html:16
+#: accounts/templates/registration/profile.html:18
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: accounts/templates/registration/profile.html:19
+#: accounts/templates/registration/profile.html:21
 msgid "E-mail"
 msgstr "E-mail"
 
-#: accounts/templates/registration/profile.html:45
+#: accounts/templates/registration/profile.html:51
 msgid "My Items"
 msgstr "Moje zboží"
 
-#: accounts/templates/registration/profile.html:64
+#: accounts/templates/registration/profile.html:71
 msgid "My Reviews"
 msgstr "Moje recenze"
 
@@ -127,15 +127,15 @@ msgstr "Moje recenze"
 msgid "Password reset"
 msgstr "Reset hesla"
 
-#: accounts/templates/registration/pswdres1.html:12
+#: accounts/templates/registration/pswdres1.html:13
 #, fuzzy
 #| msgid "Password sent! Go check your email"
 msgid "Please, enter your email!"
 msgstr "Heslo odesláno! Zkontrolujte svůj email"
 
-#: accounts/templates/registration/pswdres1.html:25
-#: accounts/templates/registration/pswdres3_confirm.html:32
-#: accounts/templates/registration/register.html:41
+#: accounts/templates/registration/pswdres1.html:26
+#: accounts/templates/registration/pswdres3_confirm.html:39
+#: accounts/templates/registration/register.html:47
 msgid "Submit"
 msgstr "Odeslat"
 
@@ -162,19 +162,19 @@ msgstr "Heslo změněno!"
 msgid "Registration"
 msgstr "Registrace úspěšná"
 
-#: accounts/views.py:32
+#: accounts/views.py:34
 msgid "Registration complete"
 msgstr "Registrace úspěšná"
 
-#: accounts/views.py:50
+#: accounts/views.py:54
 msgid "Profile saved"
 msgstr "Profil uložen"
 
-#: accounts/views.py:73
+#: accounts/views.py:80
 msgid "Profile not found"
 msgstr "Uživatel nenalezen"
 
-#: accounts/views.py:77
+#: accounts/views.py:85
 msgid "Cannot show a private profile"
 msgstr "Nelze zobrazit soukromý profil"
 

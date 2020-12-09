@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-30 13:22+0000\n"
+"POT-Creation-Date: 2020-12-09 19:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,120 +18,115 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
 "<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: shop/forms.py:17 shop/templates/shop/create_item.html:29
-#: shop/templates/shop/edit_item.html:23
+#: shop/forms.py:18 shop/templates/shop/create_item.html:34
 msgid "Image"
 msgstr "Obrázek"
 
-#: shop/forms.py:18 shop/templates/shop/create_item.html:11
-#: shop/templates/shop/edit_item.html:11
+#: shop/forms.py:19 shop/templates/shop/create_item.html:11
 msgid "Name"
 msgstr "Jméno"
 
-#: shop/forms.py:19 shop/templates/shop/create_item.html:14
-#: shop/templates/shop/edit_item.html:14
+#: shop/forms.py:20 shop/templates/shop/create_item.html:14
 msgid "Price"
 msgstr "Cena"
 
-#: shop/forms.py:20 shop/templates/shop/create_item.html:24
-#: shop/templates/shop/edit_item.html:18
+#: shop/forms.py:21 shop/templates/shop/create_item.html:24
 msgid "Description"
 msgstr "Popis"
 
-#: shop/forms.py:33
+#: shop/forms.py:34
 msgid "Stars"
 msgstr "Hvězdiček"
 
-#: shop/forms.py:34 shop/templates/shop/review_delete.html:13
+#: shop/forms.py:35 shop/templates/shop/review_delete.html:13
 msgid "Text"
 msgstr "Text"
 
-#: shop/forms.py:42
+#: shop/forms.py:43
 msgid "First name"
 msgstr "Křestní jméno"
 
-#: shop/forms.py:43
+#: shop/forms.py:44
 msgid "Last name"
 msgstr "Příjmení"
 
-#: shop/forms.py:44
+#: shop/forms.py:45
 msgid "Avenue"
 msgstr "Ulice"
 
-#: shop/forms.py:45
+#: shop/forms.py:46
 msgid "Postal code"
 msgstr "PSČ"
 
-#: shop/forms.py:46
+#: shop/forms.py:47
 msgid "City"
 msgstr "Město"
 
-#: shop/forms.py:57
+#: shop/forms.py:58 shop/models.py:104
 msgid "Post"
 msgstr "Pošta"
 
-#: shop/forms.py:57
+#: shop/forms.py:58 shop/models.py:104
 msgid "DPD"
 msgstr "DPD"
 
-#: shop/forms.py:57
+#: shop/forms.py:58 shop/models.py:104
 msgid "PPL"
 msgstr "PPL"
 
-#: shop/forms.py:58
+#: shop/forms.py:59 shop/models.py:105
 msgid "On Delivery"
 msgstr "Dobírka"
 
-#: shop/forms.py:58
+#: shop/forms.py:59 shop/models.py:105
 msgid "PayPal"
 msgstr "PayPal"
 
-#: shop/forms.py:58
+#: shop/forms.py:59 shop/models.py:105
 msgid "CreditCard"
 msgstr "Kartou"
 
-#: shop/forms.py:60 shop/templates/shop/buy_confirm.html:31
+#: shop/forms.py:61 shop/templates/shop/buy_confirm.html:36
 msgid "Payment"
 msgstr "Platba"
 
-#: shop/forms.py:61 shop/templates/shop/buy_confirm.html:30
+#: shop/forms.py:62 shop/templates/shop/buy_confirm.html:35
 msgid "Shipment"
 msgstr "Doručovací metoda"
 
-#: shop/forms.py:77 shop/templates/shop/buy_address.html:3
+#: shop/forms.py:78 shop/templates/shop/buy_address.html:3
 #: shop/templates/shop/buy_address.html:10
 msgid "Address"
 msgstr "Adresa"
 
-#: shop/templates/base.html:27 shop/templates/base.html:28
+#: shop/templates/base.html:34 shop/templates/base.html:35
 #: shop/templates/shop/search.html:3
 msgid "Search"
 msgstr "Vyhledávání"
 
-#: shop/templates/base.html:33
+#: shop/templates/base.html:41
 msgid "Logged as"
 msgstr "Přihlášen/a jako"
 
-#: shop/templates/base.html:34
+#: shop/templates/base.html:42
 msgid "Shopping Cart"
 msgstr "Košík"
 
-#: shop/templates/base.html:36 shop/templates/shop/create_item.html:3
-#: shop/templates/shop/edit_item.html:3
+#: shop/templates/base.html:45 shop/templates/shop/create_item.html:3
 msgid "Create item"
 msgstr "Vytvořit předmět"
 
-#: shop/templates/base.html:39
+#: shop/templates/base.html:48
 #, fuzzy
 #| msgid "Log in"
 msgid "Log out"
 msgstr "Odhlásit se"
 
-#: shop/templates/base.html:41
+#: shop/templates/base.html:52
 msgid "Log in"
 msgstr "Přihlásit se"
 
-#: shop/templates/base.html:42
+#: shop/templates/base.html:53
 msgid "Register"
 msgstr "Registrace"
 
@@ -139,28 +134,28 @@ msgstr "Registrace"
 msgid "Addresses"
 msgstr "Adresy"
 
-#: shop/templates/shop/address.html:17 shop/templates/shop/item_reviews.html:17
-#: shop/templates/shop/view_item.html:44
+#: shop/templates/shop/address.html:19 shop/templates/shop/item_reviews.html:17
+#: shop/templates/shop/view_item.html:46
 msgid "Edit"
 msgstr "Upravit"
 
-#: shop/templates/shop/address.html:17
+#: shop/templates/shop/address.html:19
 #, fuzzy
 #| msgid "Delete item"
 msgid "Delete"
 msgstr "Odstranit předmět"
 
-#: shop/templates/shop/address.html:23
+#: shop/templates/shop/address.html:28
 msgid "Add address"
 msgstr "Přidat adresu"
 
 #: shop/templates/shop/address_add.html:3
-#: shop/templates/shop/buy_address.html:21
+#: shop/templates/shop/buy_address.html:24
 msgid "Add Address"
 msgstr "Přidat adresu"
 
-#: shop/templates/shop/address_add.html:31
-#: shop/templates/shop/address_edit.html:28 shop/templates/shop/cart.html:28
+#: shop/templates/shop/address_add.html:33
+#: shop/templates/shop/address_edit.html:33 shop/templates/shop/cart.html:32
 #: shop/templates/shop/review_edit.html:10
 msgid "Save"
 msgstr "Uložit"
@@ -193,50 +188,50 @@ msgstr "Upravit adresu"
 msgid "Place an order"
 msgstr "Vytvořit objednávku"
 
-#: shop/templates/shop/buy.html:16 shop/templates/shop/buy.html:17
-#: shop/templates/shop/buy.html:26 shop/templates/shop/buy_confirm.html:16
-#: shop/templates/shop/buy_confirm.html:17
-#: shop/templates/shop/buy_confirm.html:23 shop/templates/shop/cart.html:14
-#: shop/templates/shop/cart.html:16 shop/templates/shop/cart.html:17
-#: shop/templates/shop/cart.html:37 shop/templates/shop/create_item.html:18
-#: shop/templates/shop/index.html:15 shop/templates/shop/search.html:17
-#: shop/templates/shop/view_item.html:23
+#: shop/templates/shop/buy.html:17 shop/templates/shop/buy.html:18
+#: shop/templates/shop/buy.html:28 shop/templates/shop/buy_confirm.html:18
+#: shop/templates/shop/buy_confirm.html:19
+#: shop/templates/shop/buy_confirm.html:27 shop/templates/shop/cart.html:16
+#: shop/templates/shop/cart.html:18 shop/templates/shop/cart.html:19
+#: shop/templates/shop/cart.html:44 shop/templates/shop/create_item.html:18
+#: shop/templates/shop/index.html:35 shop/templates/shop/search.html:41
+#: shop/templates/shop/view_item.html:24
 msgid "CZK"
 msgstr "Kč"
 
-#: shop/templates/shop/buy.html:26 shop/templates/shop/buy_confirm.html:23
-#: shop/templates/shop/cart.html:17 shop/templates/shop/cart.html:37
+#: shop/templates/shop/buy.html:28 shop/templates/shop/buy_confirm.html:27
+#: shop/templates/shop/cart.html:19 shop/templates/shop/cart.html:44
 msgid "Total"
 msgstr "Celkem"
 
-#: shop/templates/shop/buy.html:29 shop/templates/shop/buy_address.html:29
-#: shop/templates/shop/buy_details.html:27
+#: shop/templates/shop/buy.html:31 shop/templates/shop/buy_address.html:32
+#: shop/templates/shop/buy_details.html:30
 #: shop/templates/shop/item_reviews.html:5
 msgid "Back"
 msgstr "Zpět"
 
-#: shop/templates/shop/buy.html:30
+#: shop/templates/shop/buy.html:32
 msgid "Proceed"
 msgstr "Pokračovat"
 
-#: shop/templates/shop/buy_address.html:30
-#: shop/templates/shop/buy_details.html:28
+#: shop/templates/shop/buy_address.html:33
+#: shop/templates/shop/buy_details.html:31
 msgid "Next"
 msgstr "Další"
 
-#: shop/templates/shop/buy_confirm.html:28
+#: shop/templates/shop/buy_confirm.html:33
 msgid "Details"
 msgstr "Detaily"
 
-#: shop/templates/shop/buy_confirm.html:32
+#: shop/templates/shop/buy_confirm.html:37
 msgid "Shipping address"
 msgstr "Doručovací adresa"
 
-#: shop/templates/shop/buy_confirm.html:44
+#: shop/templates/shop/buy_confirm.html:50
 msgid "Back to cart"
 msgstr "Zpět do košíku"
 
-#: shop/templates/shop/buy_confirm.html:45
+#: shop/templates/shop/buy_confirm.html:51
 msgid "Place the order"
 msgstr "Vytvořit objednávku"
 
@@ -253,15 +248,15 @@ msgstr "Košík"
 msgid "Your cart"
 msgstr "Váš košík"
 
-#: shop/templates/shop/cart.html:16
+#: shop/templates/shop/cart.html:18
 msgid "One"
 msgstr "Jeden"
 
-#: shop/templates/shop/cart.html:20
+#: shop/templates/shop/cart.html:22
 msgid "Amount"
 msgstr "Množstvi"
 
-#: shop/templates/shop/cart.html:40
+#: shop/templates/shop/cart.html:49
 msgid "Buy"
 msgstr "Koupit"
 
@@ -284,8 +279,11 @@ msgstr "z Vašeho košíku?"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: shop/templates/shop/create_item.html:32
-#: shop/templates/shop/edit_item.html:26
+#: shop/templates/shop/create_item.html:29
+msgid "Category"
+msgstr "Kategorie"
+
+#: shop/templates/shop/create_item.html:37
 msgid "Done"
 msgstr "Hotovo"
 
@@ -303,17 +301,29 @@ msgid ""
 "sale)"
 msgstr "(Toto je ukázkový eshop, žádné věci nejsou na prodej)"
 
-#: shop/templates/shop/index.html:23 shop/templates/shop/search.html:25
+#: shop/templates/shop/index.html:11 shop/templates/shop/search.html:11
+msgid "Category:"
+msgstr "Kategorie:"
+
+#: shop/templates/shop/index.html:18 shop/templates/shop/search.html:18
+msgid "Sort by:"
+msgstr "Seřadit podle:"
+
+#: shop/templates/shop/index.html:24 shop/templates/shop/search.html:24
+msgid "Choose"
+msgstr "Zvolit"
+
+#: shop/templates/shop/index.html:44 shop/templates/shop/search.html:50
 msgid "Previous Page"
 msgstr "Předchozí stránka"
 
-#: shop/templates/shop/index.html:26 shop/templates/shop/search.html:28
+#: shop/templates/shop/index.html:47 shop/templates/shop/search.html:53
 msgid "Next Page"
 msgstr "Další stránka"
 
 #: shop/templates/shop/item_reviews.html:3
 #: shop/templates/shop/item_reviews.html:6
-#: shop/templates/shop/view_item.html:30
+#: shop/templates/shop/view_item.html:32
 msgid "Reviews"
 msgstr "Recenze"
 
@@ -341,125 +351,140 @@ msgstr "Odstranit recenzi"
 msgid "Search:"
 msgstr "Vyhledávání"
 
-#: shop/templates/shop/search.html:9
+#: shop/templates/shop/search.html:29
 msgid "Nothing found.."
 msgstr "Nic nenalezeno..."
 
-#: shop/templates/shop/view_item.html:16
+#: shop/templates/shop/view_item.html:17
 msgid "Edit item"
 msgstr "Upravit předmět"
 
-#: shop/templates/shop/view_item.html:19
+#: shop/templates/shop/view_item.html:20
 msgid "In cart"
 msgstr "V košíku"
 
-#: shop/templates/shop/view_item.html:21
+#: shop/templates/shop/view_item.html:22
 msgid "Add to cart"
 msgstr "Přidat do košíku"
 
-#: shop/templates/shop/view_item.html:32
+#: shop/templates/shop/view_item.html:34
 msgid "Rating"
 msgstr "Hodnocení"
 
-#: shop/templates/shop/view_item.html:34
+#: shop/templates/shop/view_item.html:36
 #, fuzzy
 #| msgid "No reviews yet!"
 msgid "No reviews to show yet!"
 msgstr "Zatím žádné recenze!"
 
-#: shop/templates/shop/view_item.html:53
+#: shop/templates/shop/view_item.html:55
 msgid "View All"
 msgstr "Zobrazit vše"
 
-#: shop/templates/shop/view_item.html:58
+#: shop/templates/shop/view_item.html:62
 msgid "Add review"
 msgstr "Přidat recenzi"
 
-#: shop/templates/shop/view_item.html:65
+#: shop/templates/shop/view_item.html:69
 msgid "Review"
 msgstr "Recenze"
 
+#: shop/views.py:26
+msgid "Date created, descending"
+msgstr "Datum vytvoření, sestupně"
+
+#: shop/views.py:27
+msgid "Date created, ascending"
+msgstr "Datum vytvoření, vzestupně"
+
 #: shop/views.py:28
+msgid "Price, descending"
+msgstr "Cena, sestupně"
+
+#: shop/views.py:29
+msgid "Price, ascending"
+msgstr "Cena, vzestupně"
+
+#: shop/views.py:77
 msgid "Item created"
 msgstr "Předmět vytvořen"
 
-#: shop/views.py:39 shop/views.py:59 shop/views.py:88 shop/views.py:98
-#: shop/views.py:108 shop/views.py:154 shop/views.py:268 shop/views.py:291
-#: shop/views.py:306
+#: shop/views.py:90 shop/views.py:115 shop/views.py:157 shop/views.py:172
+#: shop/views.py:187 shop/views.py:240 shop/views.py:358 shop/views.py:394
 msgid "Item not found"
 msgstr "Předmět nenalezen"
 
-#: shop/views.py:49
+#: shop/views.py:104
 msgid "Item saved"
 msgstr "Předmět uložen"
 
-#: shop/views.py:69
+#: shop/views.py:128
 msgid "Review saved"
 msgstr "Recenze uložena"
 
-#: shop/views.py:114
+#: shop/views.py:193
 msgid "Item deleted"
 msgstr "Předmět odstraněn"
 
-#: shop/views.py:131
+#: shop/views.py:212
 msgid "Cart updated"
 msgstr "Košík uložen"
 
-#: shop/views.py:140
+#: shop/views.py:223
 msgid "Item removed from cart"
 msgstr "Předmět odstraněn z košíku"
 
-#: shop/views.py:157
+#: shop/views.py:243
 msgid "Item added to cart"
 msgstr "Předmět přidán do košíku"
 
-#: shop/views.py:254
+#: shop/views.py:343
 msgid "Order created! Thanks for shopping"
 msgstr "Objednávka vytvořena! děkujeme za nákup"
 
-#: shop/views.py:264 shop/views.py:287 shop/views.py:302
+#: shop/views.py:353 shop/views.py:390
 msgid "Review not found"
 msgstr "Recenze nenalezena"
 
-#: shop/views.py:279
+#: shop/views.py:373
 msgid "An error occured when deleting your review"
 msgstr "Při odstraňování recenze se vyskytla chyba"
 
-#: shop/views.py:282
+#: shop/views.py:377
 #, fuzzy
 #| msgid "Review delete"
 msgid "Review deleted!"
 msgstr "Odstranit recenzi"
 
-#: shop/views.py:310
+#: shop/views.py:399
 msgid "You don't have the permission to do that"
 msgstr "Na to nemáte oprávnění"
 
-#: shop/views.py:317
+#: shop/views.py:407
 msgid "Review updated"
 msgstr "Recenze uložena"
 
-#: shop/views.py:349
+#: shop/views.py:441
 msgid "Address added!"
 msgstr "Adresa přidána!"
 
-#: shop/views.py:365
+#: shop/views.py:458
 #, fuzzy
 #| msgid "Item not found"
 msgid "Address not found"
 msgstr "Předmět nenalezen"
 
-#: shop/views.py:368 shop/views.py:389
+#: shop/views.py:461 shop/views.py:483
 #, fuzzy
 #| msgid "You don't have the permission to do that"
 msgid "You don't have permission to access that!"
 msgstr "Na to nemáte oprávnění"
 
-#: shop/views.py:374
+#: shop/views.py:467
 msgid "Address saved!"
 msgstr "Adresa uložena!"
 
-#: shop/views.py:392
+#: shop/views.py:486
 #, fuzzy
 #| msgid "Item deleted"
 msgid "Address deleted!"
