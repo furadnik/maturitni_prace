@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from .models import Item, Review, Address, Order, Category
 
 class ItemForm(forms.ModelForm):
-  categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple)
+  categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple, required=False)
   class Meta:
     model = Item
     fields = ('name', 'price', 'description', 'image')

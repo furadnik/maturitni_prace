@@ -133,7 +133,7 @@ class OrderStack(models.Model):
 
 class Category(models.Model):
   name = models.CharField(max_length=30)
-  items = models.ManyToManyField(Item, related_name="categories")
+  items = models.ManyToManyField(Item, related_name="categories", blank=True)
 
   def __str__(self):
     return self.name
