@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 14:50+0100\n"
+"POT-Creation-Date: 2021-01-04 15:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -236,7 +236,7 @@ msgstr "Zpět do košíku"
 
 #: shop/templates/shop/buy_confirm.html:51
 msgid "Place the order"
-msgstr "Vytvořit objednávku"
+msgstr "Odeslat objednávku"
 
 #: shop/templates/shop/buy_details.html:3
 msgid "Buy items"
