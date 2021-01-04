@@ -223,7 +223,6 @@ msgid "Summary"
 msgstr "Shrnutí"
 
 #: shop/templates/shop/buy_confirm.html:33
-#, fuzzy
 msgid "Shipping"
 msgstr "Doručení"
 
