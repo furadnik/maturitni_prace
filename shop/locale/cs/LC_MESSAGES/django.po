@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-09 19:32+0100\n"
+"POT-Creation-Date: 2021-01-04 14:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -184,7 +184,6 @@ msgstr "Upravit adresu"
 
 #: shop/templates/shop/buy.html:3 shop/templates/shop/buy.html:7
 #: shop/templates/shop/buy_confirm.html:3
-#: shop/templates/shop/buy_confirm.html:9
 msgid "Place an order"
 msgstr "Vytvořit objednávku"
 
@@ -219,9 +218,14 @@ msgstr "Pokračovat"
 msgid "Next"
 msgstr "Další"
 
+#: shop/templates/shop/buy_confirm.html:9
+msgid "Summary"
+msgstr "Shrnutí"
+
 #: shop/templates/shop/buy_confirm.html:33
-msgid "Details"
-msgstr "Detaily"
+#, fuzzy
+msgid "Shipping"
+msgstr "Doručení"
 
 #: shop/templates/shop/buy_confirm.html:37
 msgid "Shipping address"
@@ -305,13 +309,14 @@ msgstr "(Toto je ukázkový eshop, žádné věci nejsou na prodej)"
 msgid "Category:"
 msgstr "Kategorie:"
 
+#: shop/templates/shop/index.html:13 shop/templates/shop/index.html:24
+#: shop/templates/shop/search.html:13 shop/templates/shop/search.html:24
+msgid "Choose"
+msgstr "Zvolit"
+
 #: shop/templates/shop/index.html:18 shop/templates/shop/search.html:18
 msgid "Sort by:"
 msgstr "Seřadit podle:"
-
-#: shop/templates/shop/index.html:24 shop/templates/shop/search.html:24
-msgid "Choose"
-msgstr "Zvolit"
 
 #: shop/templates/shop/index.html:44 shop/templates/shop/search.html:50
 msgid "Previous Page"
@@ -489,6 +494,9 @@ msgstr "Adresa uložena!"
 #| msgid "Item deleted"
 msgid "Address deleted!"
 msgstr "Předmět odstraněn"
+
+#~ msgid "Details"
+#~ msgstr "Detaily"
 
 #~ msgid "Bank account number"
 #~ msgstr "Číslo účtu"
